@@ -6,7 +6,7 @@ concat  = require 'gulp-concat'
 filter = require 'gulp-filter'
 gutil   = require 'gulp-util'
 jade    = require 'gulp-jade'
-bowerFiles    = require 'gulp-bower-files'
+bowerFiles    = require 'main-bower-files'
 templateCache      = require 'gulp-angular-templatecache'
 serve = require 'gulp-serve'
 livereload = require 'gulp-livereload'
@@ -46,11 +46,12 @@ gulp.task 'jade', ->
 
 gulp.task 'bower', ->
   # bowerFiles()
-  bowerFiles({
+  gulp.src bowerFiles({
     paths: {
         bowerDirectory: 'app/bower_components',
-        # bowerrc: '../',
-        bowerJson: ''
+        debugging: true,
+        checkExistence: true,
+        bowerJson: '',
     }
   })
   .pipe filter '**/*.js'
@@ -75,11 +76,10 @@ gulp.task 'watch',
   browserSync
     notify: false
     server:
-      baseDir: './_public'
+      baseDir: parameters.web_path
   gulp.watch parameters.app_path + '/**/*.coffee', ['coffee', reload]
   # gulp.watch parameters.app_path + '/**/*.(less|saas)', ['styles', 'manifest', 'references'] # Manifest and references task is necessary if these files are versioned
   gulp.watch parameters.app_path + '/*.jade', ['jade', reload] # References task only for files that contain references (but are not versioned, typically index.(jade|html))
   gulp.watch parameters.app_path + '/*/**/*.jade', ['templates', reload]
-  # gulp.watch parameters.app_path + '/*/**/*.html', ['htmlTemplates', reload]
   # gulp.watch parameters.assets_path, ['assets']
   gulp.watch 'bower.json', ['bower']

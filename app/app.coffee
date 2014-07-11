@@ -4,12 +4,11 @@ angular.module('myapp', [
   'ngCookies',
   'ngResource',
   'ngSanitize',
-  'ngRoute',
-  'ui.bootstrap',
+
+  # 'ui.bootstrap',
   'firebase',
-  'revolunet.stepper',
-  'mgcrea.ngStrap.navbar',
-  'kts.invoice'
+  # 'revolunet.stepper',
+  # 'mgcrea.ngStrap.navbar',
   # 'ui.router',
   # 'fireUser',
   # 's3UploadApp',
