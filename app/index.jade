@@ -1,0 +1,67 @@
+doctype html
+// [if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]
+// [if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]
+// [if IE 8]>         <html class="no-js lt-ie9"> <![endif]
+// [if gt IE 8]><!
+html.no-js
+  //<![endif]
+  head
+    meta(charset="utf-8")
+    meta(http-equiv="X-UA-Compatible", content="IE=edge,chrome=1")
+    base(href="/")
+    title
+    meta(name="description", content="")
+    meta(name="viewport", content="width=device-width, initial-scale=1")
+    // Place favicon.ico and apple-touch-icon.png in the root directory
+    <!-- build:css(app) styles/vendor.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:css({.tmp,app}) styles/main.css -->
+    <link rel="stylesheet" href="styles/main.css">
+    <!-- endbuild -->
+  body(ng-app="myapp")
+    //[if lt IE 7]>
+      <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
+      <![endif]
+    //[if lt IE 9]>
+      //- <script src="bower_components/es5-shim/es5-shim.js"></script>
+      //- <script src="bower_components/json3/lib/json3.min.js"></script>
+      <![endif]
+
+    div(ng-include="'components/hello.html'", ng-controller="DemoCtrl as demo")
+
+    nav.navbar.navbar-default.hidden-print(bs-navbar="", role="navigation")
+      .navbar-header
+        a.navbar-brand(href="#") App
+      ul.nav.navbar-nav
+        //- https://github.com/mgcrea/angular-strap/issues/40
+        li(data-match-route="/?(navbar)?")
+          a(href="#/") Home
+        li(data-match-route="/page-one")
+          a(href="/page-one") Page ondsfsde
+        li(data-match-route="/invoice.*")
+          a(href="#/invoice/2") Invoice
+    div(class="container-fluid", ng-view="")
+
+    // Google Analytics: change UA-XXXXX-X to be your site's ID.
+    script.
+      var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
+      (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+      g.src='//www.google-analytics.com/ga.js';
+      s.parentNode.insertBefore(g,s)}(document,'script'));
+
+    //
+     shim is needed to support upload progress/abort for HTML5 and non-HTML5 FormData browsers.
+    //
+       use html5-shim.js instead if you just support HTML5 browsers and you need progress event
+    //
+       Note: shim.js MUST BE PLACED BEFORE angular.js and angular-file-upload.js AFTER angular.js
+    
+    <script src="js/bower-vendor.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/app.templates.js"></script>
+    
+    
+    
